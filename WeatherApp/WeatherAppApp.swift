@@ -13,7 +13,8 @@ struct WeatherAppApp: App {
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            // setup later
+            WeatherLandingView(viewModel: WeatherLandingViewModel())
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
     }

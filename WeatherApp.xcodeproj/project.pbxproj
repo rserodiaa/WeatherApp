@@ -6,6 +6,12 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		54A4F32D2E320DB100BBAEEB /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 54A4F32C2E320DB100BBAEEB /* SDWebImage */; };
+		54A4F32F2E320DB500BBAEEB /* SDWebImageMapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 54A4F32E2E320DB500BBAEEB /* SDWebImageMapKit */; };
+		54A4F3312E320DB800BBAEEB /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 54A4F3302E320DB800BBAEEB /* SDWebImageSwiftUI */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		54A4F2F22E2EA72A00BBAEEB /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -52,6 +58,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				54A4F3312E320DB800BBAEEB /* SDWebImageSwiftUI in Frameworks */,
+				54A4F32F2E320DB500BBAEEB /* SDWebImageMapKit in Frameworks */,
+				54A4F32D2E320DB100BBAEEB /* SDWebImage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,6 +87,7 @@
 				54A4F2E02E2EA72400BBAEEB /* WeatherApp */,
 				54A4F2F42E2EA72A00BBAEEB /* WeatherAppTests */,
 				54A4F2FE2E2EA72A00BBAEEB /* WeatherAppUITests */,
+				54A4F32B2E320DB100BBAEEB /* Frameworks */,
 				54A4F2DF2E2EA72400BBAEEB /* Products */,
 			);
 			sourceTree = "<group>";
@@ -90,6 +100,13 @@
 				54A4F2FB2E2EA72A00BBAEEB /* WeatherAppUITests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		54A4F32B2E320DB100BBAEEB /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -112,6 +129,9 @@
 			);
 			name = WeatherApp;
 			packageProductDependencies = (
+				54A4F32C2E320DB100BBAEEB /* SDWebImage */,
+				54A4F32E2E320DB500BBAEEB /* SDWebImageMapKit */,
+				54A4F3302E320DB800BBAEEB /* SDWebImageSwiftUI */,
 			);
 			productName = WeatherApp;
 			productReference = 54A4F2DE2E2EA72400BBAEEB /* WeatherApp.app */;
@@ -195,6 +215,10 @@
 			);
 			mainGroup = 54A4F2D52E2EA72400BBAEEB;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				54A4F3292E320CEB00BBAEEB /* XCRemoteSwiftPackageReference "SDWebImage" */,
+				54A4F32A2E320D1300BBAEEB /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 54A4F2DF2E2EA72400BBAEEB /* Products */;
 			projectDirPath = "";
@@ -412,10 +436,11 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				REGISTER_APP_GROUPS = YES;
 				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2,7";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				XROS_DEPLOYMENT_TARGET = 2.5;
 			};
 			name = Debug;
@@ -449,10 +474,11 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				REGISTER_APP_GROUPS = YES;
 				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2,7";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				XROS_DEPLOYMENT_TARGET = 2.5;
 			};
 			name = Release;
@@ -583,6 +609,43 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		54A4F3292E320CEB00BBAEEB /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImage.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.21.1;
+			};
+		};
+		54A4F32A2E320D1300BBAEEB /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImageSwiftUI?tab=readme-ov-file";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.1.3;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		54A4F32C2E320DB100BBAEEB /* SDWebImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 54A4F3292E320CEB00BBAEEB /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImage;
+		};
+		54A4F32E2E320DB500BBAEEB /* SDWebImageMapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 54A4F3292E320CEB00BBAEEB /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImageMapKit;
+		};
+		54A4F3302E320DB800BBAEEB /* SDWebImageSwiftUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 54A4F32A2E320D1300BBAEEB /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */;
+			productName = SDWebImageSwiftUI;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 54A4F2D62E2EA72400BBAEEB /* Project object */;
 }

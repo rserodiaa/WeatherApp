@@ -7,34 +7,37 @@
 
 import SwiftUI
 
-struct WeatherHome: View {
+struct WeatherLandingView: View {
     @StateObject var viewModel: WeatherLandingViewModel
     
     var body: some View {
-        NavigationView {
+        NavigationStack {
             ZStack {
+                
                 TabView {
                     ForEach(viewModel.cities) { city in
-                        Text(city.cityName)
+                        CityOverview(city: city.cityName, viewModel: CityOverviewViewModel(weatherService: WeatherService()))
                     }
                 }
                 .tabViewStyle(.page(indexDisplayMode: .always))
-
-                .navigationBarItems(
-                      trailing: Button(action: {}, label: {
-                          NavigationLink(destination: AllCitiesList(viewModel: viewModel)) {
-                             Image(systemName: "plus").foregroundColor(.black)
-                         }
-                      }))
             }
-            .addLinearGradient().ignoresSafeArea()
+            .addLinearGradientBackground()
+            .toolbar {
+                ToolbarItem(placement: .primaryAction) {
+                    Button {
+                        //Action
+                    } label: {
+                        Image(systemName: ImageConstants.plus)
+                    }
+                }
+            }
+            
         }
-        
     }
 }
 
-struct WeatherHome_Previews: PreviewProvider {
+struct WeatherLandingView_Previews: PreviewProvider {
     static var previews: some View {
-        WeatherHome(viewModel: WeatherLandingViewModel.preview)
+        WeatherLandingView(viewModel: WeatherLandingViewModel.preview)
     }
 }
