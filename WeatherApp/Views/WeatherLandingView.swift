@@ -16,7 +16,7 @@ struct WeatherLandingView: View {
                 
                 TabView {
                     ForEach(viewModel.cities) { city in
-                        CityOverview(city: city.cityName, viewModel: CityOverviewViewModel(weatherService: WeatherService()))
+                        CityOverview(city: city.cityName, viewModel: CityOverviewViewModel(repository: CityOverviewRepository(service: WeatherService())))
                     }
                 }
                 .tabViewStyle(.page(indexDisplayMode: .always))

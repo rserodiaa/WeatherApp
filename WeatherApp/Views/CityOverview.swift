@@ -26,16 +26,31 @@ struct CityOverview: View {
     var body: some View {
         VStack(spacing: 30) {
             
-            if viewModel.status == .loaded {
+            switch viewModel.status {
+            case .loaded:
                 header
                 currentWeather
                 weatherAttributes
                 dailyForcastRow
                 Spacer()
-            } else {
+                
+            case .loading:
                 ProgressView()
+                
+            case .idle:
+                EmptyView()
+                
+            case .error(let message):
+                VStack {
+                    Image(systemName: ImageConstants.exclamationTriangle)
+                        .foregroundColor(.red)
+                        .font(.largeTitle)
+                    Text("Error: \(message)")
+                        .multilineTextAlignment(.center)
+                        .padding()
+                }
             }
-            
+
         }.onAppear(perform: fetchWeather)
     }
     
@@ -68,7 +83,7 @@ struct CityOverview: View {
         .frame(width: 250, height: 260)
         .background(
             RoundedRectangle(cornerRadius: 50)
-                .fill(.purple).shadow(radius: 5)
+                .fill(Color.primaryColor).shadow(radius: 5)
         )
         .overlay(
             Text(viewModel.currentDate)
@@ -94,7 +109,7 @@ struct CityOverview: View {
         .padding(.vertical, 8)
         .frame(maxWidth: .infinity)
         .background(RoundedRectangle(cornerRadius: 40)
-            .fill(Color(hex: 0xFAF9F6))
+            .fill(Color.offWhite)
             .shadow(radius: 5))
         .padding(.horizontal, 25)
     }
@@ -128,6 +143,7 @@ struct CityOverview: View {
                     }
                 }
             }
+            .scrollIndicators(.hidden)
             .padding(.horizontal, 20)
         }
     }

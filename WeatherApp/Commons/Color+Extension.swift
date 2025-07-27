@@ -16,4 +16,7 @@ extension Color {
             opacity: alpha
         )
     }
+    
+    static let offWhite = Color(hex: 0xFAF9F6)
+    static let primaryColor = Color.purple
 }

@@ -20,11 +20,11 @@ final class CityOverviewViewModel: ObservableObject {
     @Published var visibility = ""
     @Published var pressure = ""
     
-    private let weatherService: WeatherServiceProtocol
+    private let repository: CityOverviewRepositoryProtocol
     private var cancellable = Set<AnyCancellable>()
     
-    init(weatherService: WeatherServiceProtocol) {
-        self.weatherService = weatherService
+    init(repository: CityOverviewRepositoryProtocol) {
+        self.repository = repository
     }
     
     private var currentList: WeatherList? {
@@ -64,7 +64,7 @@ final class CityOverviewViewModel: ObservableObject {
     
     func fetchWeatherData(for city: String) {
         status = .loading
-        weatherService.fetchWeatherData(for: city)
+        repository.fetchWeatherData(for: city)
             .receive(on: DispatchQueue.main)
             .sink(receiveCompletion: { completion in
                 switch completion {

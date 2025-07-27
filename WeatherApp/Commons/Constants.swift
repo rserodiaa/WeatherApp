@@ -12,6 +12,7 @@ struct ImageConstants {
     static let wind = "wind"
     static let viewer = "viewer"
     static let chevronRight = "chevron.right"
+    static let exclamationTriangle = "exclamationmark.triangle.fill"
 }
 
 struct AppConstants {

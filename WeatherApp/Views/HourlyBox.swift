@@ -8,11 +8,10 @@
 import SwiftUI
 import SDWebImageSwiftUI
 
-//Do let
 struct HourlyBox: View {
-    var time: String
-    var iconURL: String
-    var temp: Int
+    let time: String
+    let iconURL: String
+    let temp: Int
     var body: some View {
         VStack {
             Text(time)
@@ -29,7 +28,7 @@ struct HourlyBox: View {
         .frame(width: 80, height: 130)
         .background(
             RoundedRectangle(cornerRadius: 20)
-                .fill(.purple)
+                .fill(Color.primaryColor)
             )
     }
 }
