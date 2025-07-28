@@ -27,5 +27,4 @@ extension View {
                 .ignoresSafeArea()
             )
         }
-    
 }

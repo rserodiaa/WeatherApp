@@ -15,7 +15,11 @@ struct WeatherService: WeatherServiceProtocol {
     /// - Parameter city: String
     /// - Returns: Returns publisher and decode into model ``WeatherData``
     func fetchWeatherData(for city: String) -> AnyPublisher<Weather, Error> {
-        guard let url = URL(string: "https://api.openweathermap.org/data/2.5/forecast?q=\(city)&appid=\(AppConstants.apiKey)&units=metric")
+        guard let apiKey = KeychainHelper.shared.read(forKey: AppConstants.weatherAPIKey) else {
+                return Fail(error: URLError(.userAuthenticationRequired)).eraseToAnyPublisher()
+            }
+        // TODO refactor url builder
+        guard let url = URL(string: "https://api.openweathermap.org/data/2.5/forecast?q=\(city)&appid=\(apiKey)&units=metric")
         else {
             return Fail(error: URLError(.badURL)).eraseToAnyPublisher()
         }
