@@ -7,10 +7,15 @@
 
 import SwiftUI
 
+private struct Constants {
+    static let back = "Back"
+    static let defaultIcon = "01n"
+    static let chevronLeft = "chevron.left"
+}
+
 struct AllDaysForecast: View {
     @Environment(\.presentationMode) var presentationMode
     var cityViewModel: CityOverviewViewModel
-    //change
     @StateObject var viewModel = PollutionViewModel(repository: PollutionRepository(service: WeatherService()))
     
     var body: some View {
@@ -44,8 +49,8 @@ struct AllDaysForecast: View {
             presentationMode.wrappedValue.dismiss()
         }) {
             HStack {
-                Image(systemName: "chevron.left")
-                Text("Back")
+                Image(systemName: Constants.chevronLeft)
+                Text(Constants.back)
                 Spacer()
             }
         }
@@ -64,7 +69,7 @@ struct AllDaysForecast: View {
             if let daily = cityViewModel.dailyForecast {
                 ForEach(daily, id: \.dt) { data in
                     let date = cityViewModel.formattedDate(from: data.dtTxt)
-                    let icon = data.weather.first?.icon ?? "01n"
+                    let icon = data.weather.first?.icon ?? Constants.defaultIcon
                     let iconUrl = URL(string: AppConstants.getIconURL(for: icon))
                     DailyRow(imageName: iconUrl,
                              temp: Int(data.main.temp),
@@ -77,14 +82,14 @@ struct AllDaysForecast: View {
         .padding()
         .padding(.vertical, 8)
         .frame(maxWidth: .infinity)
-        .background(RoundedRectangle(cornerRadius: 40).fill(.purple.opacity(0.75)))
+        .background(RoundedRectangle(cornerRadius: 40).fill(Color.primaryColor.opacity(0.75)))
         .padding(.horizontal, 25)
     }
     
     private func fetchPollutionData() {
         if viewModel.pollutionData == nil {
-            viewModel.getPollutionData(lat: cityViewModel.latLong.0,
-                                         lon: cityViewModel.latLong.1)
+            viewModel.getPollutionData(lat: cityViewModel.latLong.lat,
+                                         lon: cityViewModel.latLong.lon)
         }
     }
 }

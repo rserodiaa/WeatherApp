@@ -24,7 +24,7 @@ struct ImageConstants {
 struct AppConstants {
     //Air Visual API Key
     static let weatherAPIKey = "weather_api_key"
-    static let openWeatherBaseURL = "https://api.openweathermap.org/data/2.5/forecast"
+    static let airVisualAPIKey = "airvisual_api_key"
     static let airVisualKey = "b9f2d98a-d2bc-44d0-b41c-cb9d81d16b62"
 
     static func getIconURL(for icon: String = "10d") -> String {

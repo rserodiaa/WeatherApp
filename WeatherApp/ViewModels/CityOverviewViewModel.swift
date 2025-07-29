@@ -47,7 +47,7 @@ final class CityOverviewViewModel: ObservableObject {
         return weather?.list.enumerated().filter { ($0.offset % 8 == 0) }.map { $0.element }
     }
     
-    var latLong: (Double, Double) {
+    var latLong: (lat: Double, lon: Double) {
         return (weather?.city.coord.lat ?? 0, weather?.city.coord.lon ?? 0)
     }
     

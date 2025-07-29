@@ -8,7 +8,7 @@
 import SwiftUI
 
 final class WeatherLandingViewModel: ObservableObject {
-    @Published var cities: [City] = ["Gurugram", "New York", "Los Angeles"].map { City(cityName: $0) }
+    @Published var cities: [City] = ["Gurugram", "New York", "Belgium", "Rishikesh", "Goa", "Mumbai"].map { City(cityName: $0) }
     @Published var status: LoadingState = .idle
     @Published var errorMessage: String?
 }

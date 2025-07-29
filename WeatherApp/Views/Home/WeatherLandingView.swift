@@ -13,13 +13,17 @@ struct WeatherLandingView: View {
     var body: some View {
         NavigationStack {
             ZStack {
-                
                 TabView {
                     ForEach(viewModel.cities) { city in
                         CityOverview(city: city.cityName, viewModel: CityOverviewViewModel(repository: CityOverviewRepository(service: WeatherService())))
                     }
                 }
                 .tabViewStyle(.page(indexDisplayMode: .always))
+                .onAppear {
+                    UIPageControl.appearance().currentPageIndicatorTintColor = UIColor(Color.primaryColor)
+                    
+                    UIPageControl.appearance().pageIndicatorTintColor = UIColor(Color.gray.opacity(0.5))
+                }
             }
             .addLinearGradientBackground()
             .toolbar {

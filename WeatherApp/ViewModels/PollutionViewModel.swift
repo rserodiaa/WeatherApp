@@ -8,7 +8,7 @@
 import SwiftUI
 import Combine
 
-class PollutionViewModel: ObservableObject {
+final class PollutionViewModel: ObservableObject {
     @Published var pollutionData: PollutionData?
     @Published var isLoaded = false
     @Published var isDetailsLoaded = false
