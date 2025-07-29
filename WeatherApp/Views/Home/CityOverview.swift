@@ -119,10 +119,10 @@ struct CityOverview: View {
             HStack {
                 Text(Constants.today)
                 Spacer()
-//                NavigationLink(destination: AllDaysForecast(cityViewModel: cityViewModel)) {
+                NavigationLink(destination: AllDaysForecast(cityViewModel: viewModel)) {
                 Text(Constants.more)
                     Image(systemName: ImageConstants.chevronRight)
-//                }
+                }
                 .tint(.black)
                 
             }

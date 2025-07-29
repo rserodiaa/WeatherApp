@@ -34,8 +34,8 @@ struct WeatherService: WeatherServiceProtocol {
             .eraseToAnyPublisher()
     }
     
-    /*
-    static func getPollutionData(lat: Double, lon: Double) -> AnyPublisher<PollutionData, Error> {
+    
+    func fetchPollutionData(lat: Double, lon: Double) -> AnyPublisher<PollutionData, Error> {
         guard let url = URL(string: "https://api.airvisual.com/v2/nearest_city?lat=\(lat)&lon=\(lon)&key=\(AppConstants.airVisualKey)")
         else {
             return Fail(error: URLError(.badURL)).eraseToAnyPublisher()
@@ -52,8 +52,11 @@ struct WeatherService: WeatherServiceProtocol {
             .eraseToAnyPublisher()
     }
     
-    static func getPollutionDetails(lat: Double, lon: Double) -> AnyPublisher<PollutionDetails, Error> {
-        guard let url = URL(string: "https://api.openweathermap.org/data/2.5/air_pollution?lat=\(lat)&lon=\(lon)&appid=\(AppConstants.apiKey)")
+    func fetchPollutionDetails(lat: Double, lon: Double) -> AnyPublisher<PollutionDetails, Error> {
+        guard let apiKey = KeychainHelper.shared.read(forKey: AppConstants.weatherAPIKey) else {
+                return Fail(error: URLError(.userAuthenticationRequired)).eraseToAnyPublisher()
+            }
+        guard let url = URL(string: "https://api.openweathermap.org/data/2.5/air_pollution?lat=\(lat)&lon=\(lon)&appid=\(apiKey)")
         else {
             return Fail(error: URLError(.badURL)).eraseToAnyPublisher()
         }
@@ -68,5 +71,4 @@ struct WeatherService: WeatherServiceProtocol {
             .decode(type: PollutionDetails.self, decoder: JSONDecoder())
             .eraseToAnyPublisher()
     }
-     */
 }

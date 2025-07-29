@@ -9,4 +9,6 @@ import Combine
 
 protocol WeatherServiceProtocol {
     func fetchWeatherData(for city: String) -> AnyPublisher<Weather, Error>
+    func fetchPollutionData(lat: Double, lon: Double) -> AnyPublisher<PollutionData, Error>
+    func fetchPollutionDetails(lat: Double, lon: Double) -> AnyPublisher<PollutionDetails, Error>
 }

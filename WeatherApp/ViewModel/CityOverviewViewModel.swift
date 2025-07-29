@@ -12,7 +12,7 @@ final class CityOverviewViewModel: ObservableObject {
     @Published var status: LoadingState = .idle
     @Published var weather: Weather?
     @Published var isLoaded = false
-    @Published var iconURL: URL = URL(string: AppConstants.getIconURL(for: "10d"))!
+    @Published var iconURL: URL = URL(string: AppConstants.getIconURL())!
     @Published var desc: String = ""
     @Published var currentTemp: Int = 0
     @Published var humidity = ""
