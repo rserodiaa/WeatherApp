@@ -34,7 +34,11 @@ struct WeatherService: WeatherServiceProtocol {
             .eraseToAnyPublisher()
     }
     
-    
+    /// To get pollution data like AQI for city using AirVisual API
+    /// - Parameters
+    ///   - lat: The latitude coordinate of the location
+    ///   - lon: The longitude coordinate of the location
+    /// - Returns: Returns publisher and decode into model ``PollutionData``
     func fetchPollutionData(lat: Double, lon: Double) -> AnyPublisher<PollutionData, Error> {
         guard let url = URL(string: "https://api.airvisual.com/v2/nearest_city?lat=\(lat)&lon=\(lon)&key=\(AppConstants.airVisualKey)")
         else {
@@ -52,6 +56,11 @@ struct WeatherService: WeatherServiceProtocol {
             .eraseToAnyPublisher()
     }
     
+    /// To get pollution component details like SO2, NO2 for city using OpenWeather API
+    /// - Parameters
+    ///   - lat: The latitude coordinate of the location
+    ///   - lon: The longitude coordinate of the location
+    /// - Returns: Returns publisher and decode into model ``PollutionDetails``
     func fetchPollutionDetails(lat: Double, lon: Double) -> AnyPublisher<PollutionDetails, Error> {
         guard let apiKey = KeychainHelper.shared.read(forKey: AppConstants.weatherAPIKey) else {
                 return Fail(error: URLError(.userAuthenticationRequired)).eraseToAnyPublisher()

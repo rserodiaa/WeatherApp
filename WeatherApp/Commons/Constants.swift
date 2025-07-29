@@ -13,6 +13,12 @@ struct ImageConstants {
     static let viewer = "viewer"
     static let chevronRight = "chevron.right"
     static let exclamationTriangle = "exclamationmark.triangle.fill"
+    static let happy = "happy"
+    static let moderate = "moderate"
+    static let bad = "bad"
+    static let unhealthy = "unhealthy"
+    static let hazardous = "hazardous"
+    static let information = "information"
 }
 
 struct AppConstants {

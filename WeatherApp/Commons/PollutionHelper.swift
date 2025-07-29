@@ -109,14 +109,14 @@ struct PollutionHelper {
     ///     201-250 Purple(Hazardous)
     ///
     /// - Parameter aqi: AQI Int value in Int which falls into specific range
-    /// - Returns: Returns a topple with ``PollutionLevels``, ``colorCodes`` and image name
+    /// - Returns: Returns a tuple with PollutionLevels, colorCodes and image name
     static func getPollutionLevel(aqi: Int) -> (PollutionLevels, UInt, String) {
         switch aqi {
-        case 0...50 : return (PollutionLevels.Good, colorCodes[0], "happy") // Green
-        case 51...100: return (PollutionLevels.Moderate, colorCodes[1], "moderate") // Yellow
-        case 101...150: return (PollutionLevels.Sensitive, colorCodes[2], "unhealthy") // Orange
-        case 151...200: return (PollutionLevels.Unhealthy, colorCodes[3], "bad") // Red
-        default: return (PollutionLevels.Hazardous, colorCodes[4], "hazardous") // Purple
+        case 0...50 : return (PollutionLevels.Good, colorCodes[0], ImageConstants.happy) // Green
+        case 51...100: return (PollutionLevels.Moderate, colorCodes[1], ImageConstants.moderate) // Yellow
+        case 101...150: return (PollutionLevels.Sensitive, colorCodes[2], ImageConstants.unhealthy) // Orange
+        case 151...200: return (PollutionLevels.Unhealthy, colorCodes[3], ImageConstants.bad) // Red
+        default: return (PollutionLevels.Hazardous, colorCodes[4], ImageConstants.hazardous) // Purple
         }
     }
     

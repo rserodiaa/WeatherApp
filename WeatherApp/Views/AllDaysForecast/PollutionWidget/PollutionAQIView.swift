@@ -41,7 +41,7 @@ struct PollutionAQIView: View {
                     Button(action: {
                         showingPopover = true
                     }) {
-                        Image("information")
+                        Image(ImageConstants.information)
                             .resizable()
                             .offset(x: 10, y: -20)
                             .frame(width: 30,

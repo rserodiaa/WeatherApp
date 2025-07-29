@@ -26,7 +26,7 @@ struct AllDaysForecast: View {
             
             if viewModel.isLoaded && viewModel.isDetailsLoaded {
                 PollutionToggleWidget(aqiLevel: viewModel.aqiLevel,
-                                      pollutionComps: viewModel.filteredComps)
+                                      pollutionComps: viewModel.pollutionComponents)
             } else {
                 ProgressView()
             }

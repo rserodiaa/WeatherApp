@@ -23,7 +23,6 @@ struct WeatherAppApp: App {
         WindowGroup {
             // setup later
             WeatherLandingView(viewModel: WeatherLandingViewModel())
-                .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
     }
 }

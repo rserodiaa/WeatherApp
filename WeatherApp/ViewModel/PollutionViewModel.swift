@@ -25,12 +25,12 @@ class PollutionViewModel: ObservableObject {
         pollutionData?.data.current.pollution.aqius ?? 0
     }
     
-    private var comps: [String: Double]? {
+    private var allComps: [String: Double]? {
         pollutionDetails?.list.first?.components
     }
     
-    var filteredComps: [String: Double]? {
-        comps?.filter { requiredComps.contains($0.key) }
+    var pollutionComponents: [String: Double]? {
+        allComps?.filter { requiredComps.contains($0.key) }
     }
     
     func getPollutionData(lat: Double, lon: Double) {
