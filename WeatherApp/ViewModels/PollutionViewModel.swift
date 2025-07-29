@@ -46,13 +46,9 @@ final class PollutionViewModel: ObservableObject {
                 }
                 
             }, receiveValue: { [weak self] data in
-                guard let self = self else {
-                    return
-                }
-                DispatchQueue.main.async {
-                    self.isLoaded = true
-                    self.pollutionData = data
-                }
+                guard let self = self else { return }
+                isLoaded = true
+                pollutionData = data
             })
             .store(in: &cancellable)
     }
@@ -69,13 +65,9 @@ final class PollutionViewModel: ObservableObject {
                 }
                 
             }, receiveValue: { [weak self] data in
-                guard let self = self else {
-                    return
-                }
-                DispatchQueue.main.async {
-                    self.isDetailsLoaded = true
-                    self.pollutionDetails = data
-                }
+                guard let self = self else { return }
+                isDetailsLoaded = true
+                pollutionDetails = data
             })
             .store(in: &cancellable)
     }

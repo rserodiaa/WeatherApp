@@ -11,7 +11,6 @@ import Combine
 final class CityOverviewViewModel: ObservableObject {
     @Published var status: LoadingState = .idle
     @Published var weather: Weather?
-    @Published var isLoaded = false
     @Published var iconURL: URL = URL(string: AppConstants.getIconURL())!
     @Published var desc: String = ""
     @Published var currentTemp: Int = 0
@@ -75,22 +74,16 @@ final class CityOverviewViewModel: ObservableObject {
                 }
                 
             }, receiveValue: { [weak self] data in
-                guard let self = self else {
-                    return
-                }
-                self.isLoaded = true
-                DispatchQueue.main.async { [weak self] in
-                    guard let self = self else { return }
-                    self.weather = data
-                    self.iconURL = URL(string: AppConstants.getIconURL(for: self.icon))!
-                    self.desc = self.currentList?.weather.first?.description.capitalized ?? ""
-                    self.currentTemp = Int(self.currentList?.main.temp ?? 0)
-                    self.humidity = "\(self.currentList?.main.humidity ?? 0)%"
-                    self.wind = "\(Int(self.currentList?.wind.speed ?? 0)) Km/h"
-                    self.visibility = "\((self.currentList?.visibility ?? 0)/1000) Km"
-                    self.pressure = "\(self.currentList?.main.pressure ?? 0)"
-                    self.status = .loaded
-                }
+                guard let self = self else { return }
+                weather = data
+                iconURL = URL(string: AppConstants.getIconURL(for: self.icon))!
+                desc = self.currentList?.weather.first?.description.capitalized ?? ""
+                currentTemp = Int(self.currentList?.main.temp ?? 0)
+                humidity = "\(self.currentList?.main.humidity ?? 0)%"
+                wind = "\(Int(self.currentList?.wind.speed ?? 0)) Km/h"
+                visibility = "\((self.currentList?.visibility ?? 0)/1000) Km"
+                pressure = "\(self.currentList?.main.pressure ?? 0)"
+                status = .loaded
             })
             .store(in: &cancellable)
     }
