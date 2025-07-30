@@ -51,6 +51,8 @@ struct AllDaysForecast: View {
             HStack {
                 Image(systemName: Constants.chevronLeft)
                 Text(Constants.back)
+                    .font(Font.system(size: 17))
+                    .fontWeight(.bold)
                 Spacer()
             }
         }

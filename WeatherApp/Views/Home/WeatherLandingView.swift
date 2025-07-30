@@ -50,7 +50,7 @@ struct WeatherLandingView: View {
                     }
                 }
             }
-            .sheet(isPresented: $presentAddCityView) {
+            .fullScreenCover(isPresented: $presentAddCityView) {
                 AddCityView(viewModel: viewModel)
             }
             

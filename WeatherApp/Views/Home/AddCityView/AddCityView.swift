@@ -85,6 +85,19 @@ struct AddCityView: View {
                                 .listRowBackground(Color.clear)
                                 .listRowSeparator(.hidden)
                                 .listRowInsets(EdgeInsets(top: 6, leading: 20, bottom: 6, trailing: 20))
+                                .swipeActions(edge: .trailing, allowsFullSwipe: true) {
+                                    Button(role: .destructive) {
+                                        if let index = viewModel.cities.firstIndex(where: { $0.id == city.id }) {
+                                            viewModel.cities.remove(at: index)
+                                        }
+                                    } label: {
+                                        Image(systemName: "xmark.circle.fill")
+                                            .resizable()
+                                            .font(.system(size: 20, weight: .medium))
+                                        .foregroundColor(.white)
+                                    }
+                                    .tint(Color.purple.opacity(0.7))
+                                }
                             }
                             .onDelete(perform: deleteCity)
                         }
