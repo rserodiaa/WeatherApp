@@ -7,6 +7,7 @@
 
 struct ImageConstants {
     static let plus = "plus"
+    static let cloudSun = "cloud.sun.fill"
     static let humidity = "humidity"
     static let barometer = "barometer"
     static let wind = "wind"

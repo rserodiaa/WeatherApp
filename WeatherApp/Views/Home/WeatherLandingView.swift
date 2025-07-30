@@ -9,34 +9,53 @@ import SwiftUI
 
 struct WeatherLandingView: View {
     @StateObject var viewModel: WeatherLandingViewModel
+    @State var shouldAddCity: Bool = false
+    @State var presentAddCityView: Bool = false
     
     var body: some View {
         NavigationStack {
             ZStack {
-                TabView {
-                    ForEach(viewModel.cities) { city in
-                        CityOverview(city: city.cityName, viewModel: CityOverviewViewModel(repository: CityOverviewRepository(service: WeatherService())))
+                if viewModel.cities.isEmpty {
+                    EmptyWeatherView(shouldAddCity: $shouldAddCity)
+                        .onChange(of: shouldAddCity) { _, newValue in
+                            if newValue {
+                                handleAddCity()
+                                shouldAddCity = false
+                            }
+                        }
+                } else {
+                    TabView {
+                        ForEach(viewModel.cities) { city in
+                            CityOverview(city: city.cityName, viewModel: CityOverviewViewModel(repository: CityOverviewRepository(service: WeatherService())))
+                        }
                     }
-                }
-                .tabViewStyle(.page(indexDisplayMode: .always))
-                .onAppear {
-                    UIPageControl.appearance().currentPageIndicatorTintColor = UIColor(Color.primaryColor)
-                    
-                    UIPageControl.appearance().pageIndicatorTintColor = UIColor(Color.gray.opacity(0.5))
+                    .tabViewStyle(.page(indexDisplayMode: .always))
+                    .onAppear {
+                        UIPageControl.appearance().currentPageIndicatorTintColor = UIColor(Color.primaryColor)
+                        
+                        UIPageControl.appearance().pageIndicatorTintColor = UIColor(Color.gray.opacity(0.5))
+                    }
                 }
             }
             .addLinearGradientBackground()
             .toolbar {
                 ToolbarItem(placement: .primaryAction) {
                     Button {
-                        //Action
+                        handleAddCity()
                     } label: {
                         Image(systemName: ImageConstants.plus)
                     }
                 }
             }
+            .sheet(isPresented: $presentAddCityView) {
+                            AddCityView(viewModel: viewModel)
+                        }
             
         }
+    }
+    
+    private func handleAddCity() {
+        presentAddCityView = true
     }
 }
 
