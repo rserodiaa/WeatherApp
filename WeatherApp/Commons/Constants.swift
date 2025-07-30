@@ -23,7 +23,6 @@ struct ImageConstants {
 }
 
 struct AppConstants {
-    //Air Visual API Key
     static let weatherAPIKey = "weather_api_key"
     static let airVisualAPIKey = "airvisual_api_key"
 

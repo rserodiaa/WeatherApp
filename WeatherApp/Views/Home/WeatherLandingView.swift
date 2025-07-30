@@ -38,6 +38,9 @@ struct WeatherLandingView: View {
                 }
             }
             .addLinearGradientBackground()
+            .onAppear {
+                viewModel.fetchCities()
+            }
             .toolbar {
                 ToolbarItem(placement: .primaryAction) {
                     Button {
@@ -48,8 +51,8 @@ struct WeatherLandingView: View {
                 }
             }
             .sheet(isPresented: $presentAddCityView) {
-                            AddCityView(viewModel: viewModel)
-                        }
+                AddCityView(viewModel: viewModel)
+            }
             
         }
     }

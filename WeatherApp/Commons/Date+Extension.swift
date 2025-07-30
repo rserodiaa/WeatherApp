@@ -18,5 +18,4 @@ extension DateFormatter {
     static let time = make(with: "hh:mm a")
     static let serverDate = make(with: "YYYY-MM-dd HH:mm:ss")
     static let shortDayDate = make(with: "E, dd MMM")
-
 }

@@ -121,7 +121,12 @@ struct AddCityView: View {
             } message: {
                 Text(alertMessage)
             }
-            
+            .onChange(of: viewModel.status) { _, newValue in
+                if case let .error(message) = newValue {
+                    alertMessage = message
+                    showingAlert = true
+                }
+            }
         }
         
     }
@@ -136,8 +141,7 @@ struct AddCityView: View {
             showingAlert = true
             return
         }
-        
-        // Add city through viewModel
+        viewModel.addCity(trimmedCityName)
         cityName = ""
     }
     
@@ -146,7 +150,7 @@ struct AddCityView: View {
     private func deleteCity(at offsets: IndexSet) {
         for index in offsets {
             let cityToDelete = viewModel.cities[index]
-            print(cityToDelete)
+            viewModel.deleteCity(cityToDelete)
         }
     }
     
@@ -155,5 +159,5 @@ struct AddCityView: View {
 
 // Preview
 #Preview {
-    AddCityView(viewModel: WeatherLandingViewModel())
+    AddCityView(viewModel: .preview)
 }

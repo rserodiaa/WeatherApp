@@ -8,15 +8,19 @@
 import Foundation
 
 struct City: Identifiable {
-    let id = UUID()
+    let id: UUID
     let cityName: String
-    let createdOn: Date = Date()
+    let createdOn: Date
     
-    init(cityName: String) {
+    init(id: UUID = UUID(), cityName: String, createdOn: Date = Date()) {
+        self.id = id
         self.cityName = cityName
+        self.createdOn = createdOn
     }
     
     init(from entity: CDCity) {
-        self.init(cityName: entity.cityName ?? "")
+        self.init(id: entity.id ?? UUID(),
+                  cityName: entity.cityName ?? "",
+                  createdOn: entity.createdOn ?? Date())
     }
 }

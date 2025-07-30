@@ -7,10 +7,52 @@
 
 import SwiftUI
 
+private struct Constants {
+    static let errorMessage = "Something went wrong."
+}
+
 final class WeatherLandingViewModel: ObservableObject {
-    @Published var cities: [City] = ["Gurugram", "New York", "Belgium", "Rishikesh", "Goa", "Mumbai"].map { City(cityName: $0) }
+    @Published var cities: [City] = []
     @Published var status: LoadingState = .idle
-    @Published var errorMessage: String?
+    
+    private var repository: WeatherRepositoryProtocol
+    
+    init(repostory: WeatherRepositoryProtocol) {
+        self.repository = repostory
+    }
+    
+    func fetchCities() {
+        status = .loading
+        do {
+            cities = try repository.fetchCities()
+            status = .loaded
+        } catch {
+            handle(error)
+        }
+    }
+    
+    func addCity(_ city: String) {
+        let city = City(cityName: city)
+        do {
+            try repository.create(city: city)
+            fetchCities()
+        } catch {
+            handle(error)
+        }
+    }
+    
+    func deleteCity(_ city: City) {
+        do {
+            try repository.delete(city: city)
+            fetchCities()
+        } catch {
+            handle(error)
+        }
+    }
+    
+    private func handle(_ error: Error) {
+        status = .error((error as? LocalizedError)?.errorDescription ?? Constants.errorMessage)
+    }
 }
 
 
@@ -18,7 +60,7 @@ final class WeatherLandingViewModel: ObservableObject {
 #if DEBUG
 extension WeatherLandingViewModel {
     static var preview: WeatherLandingViewModel {
-        let viewModel = WeatherLandingViewModel()
+        let viewModel = WeatherLandingViewModel(repostory: WeatherRepository(storageService: WeatherStorageService()))
         viewModel.cities = mockCities
         return viewModel
     }
