@@ -16,8 +16,8 @@ struct WeatherService: WeatherServiceProtocol {
     /// - Returns: Returns publisher and decode into model ``Weather``
     func fetchWeatherData(for city: String) -> AnyPublisher<Weather, Error> {
         guard let apiKey = KeychainHelper.shared.read(forKey: AppConstants.weatherAPIKey) else {
-                return Fail(error: URLError(.userAuthenticationRequired)).eraseToAnyPublisher()
-            }
+            return Fail(error: URLError(.userAuthenticationRequired)).eraseToAnyPublisher()
+        }
         guard let url = URLBuilder.buildForecastURL(for: city, apiKey: apiKey)
         else {
             return Fail(error: URLError(.badURL)).eraseToAnyPublisher()
@@ -40,7 +40,10 @@ struct WeatherService: WeatherServiceProtocol {
     ///   - lon: The longitude coordinate of the location
     /// - Returns: Returns publisher and decode into model ``PollutionData``
     func fetchPollutionData(lat: Double, lon: Double) -> AnyPublisher<PollutionData, Error> {
-        guard let url = URLBuilder.buildPollutionDataURL(for: "\(lat)", and: "\(lon)", apiKey: AppConstants.airVisualKey)
+        guard let apiKey = KeychainHelper.shared.read(forKey: AppConstants.airVisualAPIKey) else {
+            return Fail(error: URLError(.userAuthenticationRequired)).eraseToAnyPublisher()
+        }
+        guard let url = URLBuilder.buildPollutionDataURL(for: "\(lat)", and: "\(lon)", apiKey: apiKey)
         else {
             return Fail(error: URLError(.badURL)).eraseToAnyPublisher()
         }
@@ -63,10 +66,9 @@ struct WeatherService: WeatherServiceProtocol {
     /// - Returns: Returns publisher and decode into model ``PollutionDetails``
     func fetchPollutionDetails(lat: Double, lon: Double) -> AnyPublisher<PollutionDetails, Error> {
         guard let apiKey = KeychainHelper.shared.read(forKey: AppConstants.weatherAPIKey) else {
-                return Fail(error: URLError(.userAuthenticationRequired)).eraseToAnyPublisher()
-            }
+            return Fail(error: URLError(.userAuthenticationRequired)).eraseToAnyPublisher()
+        }
         guard let url = URLBuilder.buildPollutionDetailsURL(for: "\(lat)", and: "\(lon)", apiKey: apiKey)
-//        guard let url = URL(string: "https://api.openweathermap.org/data/2.5/air_pollution?lat=\(lat)&lon=\(lon)&appid=\(apiKey)")
         else {
             return Fail(error: URLError(.badURL)).eraseToAnyPublisher()
         }

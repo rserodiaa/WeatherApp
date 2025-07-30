@@ -10,4 +10,13 @@ import Foundation
 struct City: Identifiable {
     let id = UUID()
     let cityName: String
+    let createdOn: Date = Date()
+    
+    init(cityName: String) {
+        self.cityName = cityName
+    }
+    
+    init(from entity: CDCity) {
+        self.init(cityName: entity.cityName ?? "")
+    }
 }

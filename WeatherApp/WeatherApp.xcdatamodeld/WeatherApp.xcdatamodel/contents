@@ -3,5 +3,6 @@
     <entity name="CDCity" representedClassName="CDCity" syncable="YES" codeGenerationType="class">
         <attribute name="cityName" optional="YES" attributeType="String"/>
         <attribute name="createdOn" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
     </entity>
 </model>
