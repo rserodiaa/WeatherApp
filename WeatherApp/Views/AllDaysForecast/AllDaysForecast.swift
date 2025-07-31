@@ -6,10 +6,10 @@
 //
 
 import SwiftUI
+import SDWebImageSwiftUI
 
 private struct Constants {
     static let back = "Back"
-    static let defaultIcon = "01n"
     static let chevronLeft = "chevron.left"
 }
 
@@ -26,7 +26,8 @@ struct AllDaysForecast: View {
             heading
             Spacer().frame(height: 30)
             
-            dailyWidget
+            DailyWidget(cityViewModel: cityViewModel)
+                
             Spacer().frame(height: 30)
             
             if viewModel.isLoaded && viewModel.isDetailsLoaded {
@@ -66,32 +67,10 @@ struct AllDaysForecast: View {
             .font(.system(size: 30))
     }
     
-    private var dailyWidget: some View {
-        VStack {
-            if let daily = cityViewModel.dailyForecast {
-                ForEach(daily, id: \.dt) { data in
-                    let date = cityViewModel.formattedDate(from: data.dtTxt)
-                    let icon = data.weather.first?.icon ?? Constants.defaultIcon
-                    let iconUrl = URL(string: AppConstants.getIconURL(for: icon))
-                    DailyRow(imageName: iconUrl,
-                             temp: Int(data.main.temp),
-                             day: date.day,
-                             date: date.date)
-                }
-            }
-            Spacer()
-        }
-        .padding()
-        .padding(.vertical, 8)
-        .frame(maxWidth: .infinity)
-        .background(RoundedRectangle(cornerRadius: 40).fill(Color.primaryColor.opacity(0.75)))
-        .padding(.horizontal, 25)
-    }
-    
     private func fetchPollutionData() {
         if viewModel.pollutionData == nil {
             viewModel.getPollutionData(lat: cityViewModel.latLong.lat,
-                                         lon: cityViewModel.latLong.lon)
+                                       lon: cityViewModel.latLong.lon)
         }
     }
 }
