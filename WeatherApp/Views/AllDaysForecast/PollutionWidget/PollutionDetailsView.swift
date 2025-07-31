@@ -28,7 +28,6 @@ struct PollutionDetailsView: View {
                             Text(pollutant.value)
                                 .font(.caption)
                         }
-                        
                     }
                 }
             }

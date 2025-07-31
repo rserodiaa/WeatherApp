@@ -26,9 +26,7 @@ struct WeatherAppApp: App {
     
     var body: some Scene {
         WindowGroup {
-            let storageService = WeatherStorageService()
-            let repository = WeatherRepository(storageService: storageService)
-            WeatherLandingView(viewModel: WeatherLandingViewModel(repostory: repository))
+            LaunchScreenView()
         }
     }
 }
