@@ -7,6 +7,18 @@
 
 import SwiftUI
 
+private struct Constants {
+    static let enterCity = "Enter city name"
+    static let add = "Add"
+    static let yourCities = "Your Cities"
+    static let manageCities = "Manage Cities"
+    static let cancel = "Cancel"
+    static let done = "Done"
+    static let error = "Error"
+    static let ok = "OK"
+    static let duplicateCity = "This city is already in your list"
+}
+
 struct AddCityView: View {
     @Environment(\.dismiss) private var dismiss
     @State private var cityName = ""
@@ -20,17 +32,17 @@ struct AddCityView: View {
             VStack(spacing: 20) {
                 HStack(spacing: 12) {
                     HStack {
-                        Image(systemName: "magnifyingglass")
+                        Image(systemName: ImageConstants.search)
                             .foregroundColor(.gray)
                         
-                        TextField("Enter city name", text: $cityName)
+                        TextField(Constants.enterCity, text: $cityName)
                             .autocapitalization(.words)
                             .disableAutocorrection(true)
                             .padding()
                             .background(.white.opacity(0.9))
                             .cornerRadius(15)
                         
-                        Button("Add") {
+                        Button(Constants.add) {
                             addCity()
                         }
                         .disabled(cityName.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty)
@@ -50,7 +62,7 @@ struct AddCityView: View {
                 if !viewModel.cities.isEmpty {
                     VStack(alignment: .leading, spacing: 0) {
                         HStack {
-                            Text("Your Cities")
+                            Text(Constants.yourCities)
                                 .font(.title2)
                                 .fontWeight(.bold)
                                 .foregroundColor(.white)
@@ -67,7 +79,7 @@ struct AddCityView: View {
                                             .fill(.white.opacity(0.2))
                                             .frame(width: 40, height: 40)
                                         
-                                        Image(systemName: "location.fill")
+                                        Image(systemName: ImageConstants.location)
                                             .foregroundColor(.white)
                                             .font(.system(size: 16))
                                     }
@@ -91,7 +103,7 @@ struct AddCityView: View {
                                             viewModel.cities.remove(at: index)
                                         }
                                     } label: {
-                                        Image(systemName: "xmark.circle.fill")
+                                        Image(systemName: ImageConstants.cross)
                                             .resizable()
                                             .font(.system(size: 20, weight: .medium))
                                         .foregroundColor(.white)
@@ -109,28 +121,28 @@ struct AddCityView: View {
             }
             .frame(maxHeight: .infinity, alignment: .top)
             .addLinearGradientBackground()
-            .navigationTitle("Manage Cities")
+            .navigationTitle(Constants.manageCities)
             .navigationBarTitleDisplayMode(.inline)
             .toolbarBackground(.clear, for: .navigationBar)
             .toolbarColorScheme(.dark, for: .navigationBar)
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
-                    Button("Cancel") {
+                    Button(Constants.cancel) {
                         dismiss()
                     }
                     .foregroundColor(.white)
                 }
                 
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    Button("Done") {
+                    Button(Constants.done) {
                         dismiss()
                     }
                     .fontWeight(.semibold)
                     .foregroundColor(.white)
                 }
             }
-            .alert("Error", isPresented: $showingAlert) {
-                Button("OK", role: .cancel) { }
+            .alert(Constants.error, isPresented: $showingAlert) {
+                Button(Constants.ok, role: .cancel) { }
             } message: {
                 Text(alertMessage)
             }
@@ -150,7 +162,7 @@ struct AddCityView: View {
         guard !trimmedCityName.isEmpty else { return }
         
         if viewModel.cities.contains(where: { $0.cityName.lowercased() == trimmedCityName.lowercased() }) {
-            alertMessage = "This city is already in your list"
+            alertMessage = Constants.duplicateCity
             showingAlert = true
             return
         }

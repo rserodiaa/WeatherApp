@@ -1,5 +1,5 @@
 //
-//  AnimatedLaunchScreen.swift
+//  WeatherLaunchScreen.swift
 //  WeatherApp
 //
 //  Created by Rahul Serodia on 31/07/25.

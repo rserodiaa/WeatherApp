@@ -31,6 +31,10 @@ private struct Constants {
 
 struct URLBuilder {
 
+    static func getIconURL(for icon: String = "10d") -> String {
+        return "https://openweathermap.org/img/wn/\(icon)@2x.png"
+    }
+    
     static func buildForecastURL(for city: String, apiKey: String, units: String = "metric") -> URL? {
         var components = URLComponents(string: Constants.Endpoint.forecast.url)
         components?.queryItems = [

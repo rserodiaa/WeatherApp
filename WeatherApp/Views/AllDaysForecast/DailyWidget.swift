@@ -10,8 +10,10 @@ import SDWebImageSwiftUI
 
 private struct Constants {
     static let defaultIcon = "01n"
-    static let chevronRight = "chevron.right"
     static let title = "5-Days Forecasts"
+    static let celcius = "°C"
+    static let min = "Min:"
+    static let max = "Max:"
 }
 
 struct DailyWidget: View {
@@ -21,7 +23,7 @@ struct DailyWidget: View {
             HStack {
                 VStack(alignment: .leading) {
                     if let current = cityViewModel.dailyForecast?.first {
-                        Text("Max: \(Int(current.main.tempMax))° Min:\(Int(current.main.tempMin))°")
+                        Text("\(Constants.max) \(Int(current.main.tempMax))° \(Constants.min) \(Int(current.main.tempMin))°")
                             .font(.subheadline)
                             .foregroundColor(.white.opacity(0.8))
                     }
@@ -61,7 +63,7 @@ struct DailyWidget: View {
                     }
                     .padding(.horizontal, 8)
                 }
-                Image(systemName: Constants.chevronRight)
+                Image(systemName: ImageConstants.chevronRight)
                     .font(.system(size: 14))
                     .foregroundColor(.white.opacity(0.6))
                 
@@ -86,7 +88,7 @@ struct DailyWidget: View {
         
         var body: some View {
             VStack(spacing: 4) {
-                Text("\(temp)°C")
+                Text("\(temp)\(Constants.celcius)")
                     .font(.system(size: 16, weight: .bold))
                     .foregroundColor(.white)
                 

@@ -17,6 +17,7 @@ private struct Constants {
     static let today = "Today"
     static let more = "More"
     static let defaultIcon = "10d"
+    static let celcius = "° C"
 }
 
 struct CityOverview: View {
@@ -74,7 +75,7 @@ struct CityOverview: View {
                 .resizable()
                 .scaledToFit()
                 .frame(width: 130, height: 130)
-            Text("\(viewModel.currentTemp)° C")
+            Text("\(viewModel.currentTemp)\(Constants.celcius)")
                 .fontWeight(.bold)
                 .font(.system(size: 64))
             Text(viewModel.desc).font(.caption)

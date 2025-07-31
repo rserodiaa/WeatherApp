@@ -20,13 +20,7 @@ struct ImageConstants {
     static let unhealthy = "unhealthy"
     static let hazardous = "hazardous"
     static let information = "information"
-}
-
-struct AppConstants {
-    static let weatherAPIKey = "weather_api_key"
-    static let airVisualAPIKey = "airvisual_api_key"
-
-    static func getIconURL(for icon: String = "10d") -> String {
-        return "https://openweathermap.org/img/wn/\(icon)@2x.png"
-    }
+    static let search = "magnifyingglass"
+    static let location = "location.fill"
+    static let cross = "xmark.circle.fill"
 }
