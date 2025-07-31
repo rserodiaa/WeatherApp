@@ -17,7 +17,6 @@ struct ValueDescriptionView: View {
             Image(imageName)
                 .resizable()
                 .frame(width: 30, height: 30)
-                .foregroundColor(.purple)
             Text(value).font(.subheadline).fontWeight(.bold).padding(.vertical, 2)
             Text(weatherAttr).font(.caption).foregroundColor(.gray)
         }

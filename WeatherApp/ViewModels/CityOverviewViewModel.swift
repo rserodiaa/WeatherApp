@@ -16,7 +16,7 @@ final class CityOverviewViewModel: ObservableObject {
     @Published var currentTemp: Int = 0
     @Published var humidity = ""
     @Published var wind = ""
-    @Published var visibility = ""
+    @Published var precipitation = ""
     @Published var pressure = ""
     
     private let repository: CityOverviewRepositoryProtocol
@@ -81,7 +81,7 @@ final class CityOverviewViewModel: ObservableObject {
                 currentTemp = Int(self.currentList?.main.temp ?? 0)
                 humidity = "\(self.currentList?.main.humidity ?? 0)%"
                 wind = "\(Int(self.currentList?.wind.speed ?? 0)) Km/h"
-                visibility = "\((self.currentList?.visibility ?? 0)/1000) Km"
+                precipitation = "\((self.currentList?.pop ?? 0)*100)%"
                 pressure = "\(self.currentList?.main.pressure ?? 0)"
                 status = .loaded
             })

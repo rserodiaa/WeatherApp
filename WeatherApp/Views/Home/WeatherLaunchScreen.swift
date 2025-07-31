@@ -32,7 +32,7 @@ struct WeatherLaunchScreen: View {
             .ignoresSafeArea()
             
             // Floating particles background
-            ForEach(0..<15, id: \.self) { index in
+            ForEach(0..<20, id: \.self) { index in
                 Circle()
                     .fill(Color.primaryColor)
                     .frame(width: CGFloat.random(in: 4...12))

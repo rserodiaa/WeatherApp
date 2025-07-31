@@ -12,6 +12,7 @@ struct ImageConstants {
     static let barometer = "barometer"
     static let wind = "wind"
     static let viewer = "viewer"
+    static let precipitation = "precipitation"
     static let chevronRight = "chevron.right"
     static let exclamationTriangle = "exclamationmark.triangle.fill"
     static let happy = "happy"

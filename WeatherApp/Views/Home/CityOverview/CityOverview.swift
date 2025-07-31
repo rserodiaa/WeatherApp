@@ -12,7 +12,7 @@ import SDWebImageSwiftUI
 private struct Constants {
     static let humidity = "Humidity"
     static let wind = "Wind Speed"
-    static let visibility = "Visibility"
+    static let precipitation = "Precipitation"
     static let pressure = "Pressure"
     static let today = "Today"
     static let more = "More"
@@ -103,7 +103,7 @@ struct CityOverview: View {
         HStack(spacing: 20) {
             ValueDescriptionView(imageName: ImageConstants.humidity, value: viewModel.humidity, weatherAttr: Constants.humidity)
             ValueDescriptionView(imageName: ImageConstants.wind, value: viewModel.wind, weatherAttr: Constants.wind)
-            ValueDescriptionView(imageName: ImageConstants.viewer, value: viewModel.visibility, weatherAttr: Constants.visibility)
+            ValueDescriptionView(imageName: ImageConstants.precipitation, value: viewModel.precipitation, weatherAttr: Constants.precipitation)
             ValueDescriptionView(imageName: ImageConstants.barometer, value: viewModel.pressure, weatherAttr: Constants.pressure)
         }
         .padding()

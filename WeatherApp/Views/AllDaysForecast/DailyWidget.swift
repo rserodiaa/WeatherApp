@@ -98,14 +98,14 @@ struct DailyWidget: View {
                     .frame(width: 40, height: 35)
                 
                 Text(day)
-                    .font(.system(size: 11, weight: .medium))
-                    .foregroundColor(isToday ? .yellow : .white.opacity(0.9))
+                    .font(.system(size: 13, weight: .bold))
+                    .foregroundColor(isToday ? .yellow : .white)
                 Text(date)
-                    .font(.system(size: 12, weight: .medium))
-                    .foregroundColor(isToday ? .yellow : .white.opacity(0.9))
+                    .font(.system(size: 13, weight: .bold))
+                    .foregroundColor(isToday ? .yellow : .white)
             }
             .padding(.vertical, 18)
-            .frame(width: 65, height: 110)
+            .frame(width: 65, height: 120)
             .background(
                 RoundedRectangle(cornerRadius: 18)
                     .fill(isToday ? Color.white.opacity(0.15) : Color.clear)
