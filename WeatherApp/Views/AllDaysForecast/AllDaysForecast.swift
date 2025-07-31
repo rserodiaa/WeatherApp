@@ -30,11 +30,23 @@ struct AllDaysForecast: View {
                 
             Spacer().frame(height: 30)
             
-            if viewModel.isLoaded && viewModel.isDetailsLoaded {
+            switch viewModel.status {
+            case .idle:
+                EmptyView()
+            case .loading:
+                ProgressView()
+            case .error(let message):
+                VStack {
+                    Image(systemName: ImageConstants.exclamationTriangle)
+                        .foregroundColor(.red)
+                        .font(.title)
+                    Text("Unable to load pollution widget due to error: \(message)")
+                        .multilineTextAlignment(.center)
+                        .padding()
+                }
+            case .loaded:
                 PollutionToggleWidget(aqiLevel: viewModel.aqiLevel,
                                       pollutionComps: viewModel.pollutionComponents)
-            } else {
-                ProgressView()
             }
             
         }

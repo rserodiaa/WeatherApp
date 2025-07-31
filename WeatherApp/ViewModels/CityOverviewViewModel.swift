@@ -11,7 +11,7 @@ import Combine
 final class CityOverviewViewModel: ObservableObject {
     @Published var status: LoadingState = .idle
     @Published var weather: Weather?
-    @Published var iconURL: URL = URL(string: AppConstants.getIconURL())!
+    @Published var iconURL: URL = URL(string: URLBuilder.getIconURL())!
     @Published var desc: String = ""
     @Published var currentTemp: Int = 0
     @Published var humidity = ""
@@ -76,7 +76,7 @@ final class CityOverviewViewModel: ObservableObject {
             }, receiveValue: { [weak self] data in
                 guard let self = self else { return }
                 weather = data
-                iconURL = URL(string: AppConstants.getIconURL(for: self.icon))!
+                iconURL = URL(string: URLBuilder.getIconURL(for: self.icon))!
                 desc = self.currentList?.weather.first?.description.capitalized ?? ""
                 currentTemp = Int(self.currentList?.main.temp ?? 0)
                 humidity = "\(self.currentList?.main.humidity ?? 0)%"

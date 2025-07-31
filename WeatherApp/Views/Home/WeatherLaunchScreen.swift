@@ -153,6 +153,7 @@ struct LaunchScreenView: View {
             let storageService = WeatherStorageService()
             let repository = WeatherRepository(storageService: storageService)
             WeatherLandingView(viewModel: WeatherLandingViewModel(repostory: repository))
+                .tint(Color.primaryColor)
         } else {
             WeatherLaunchScreen()
                 .onAppear {

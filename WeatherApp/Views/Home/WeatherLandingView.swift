@@ -52,7 +52,6 @@ struct WeatherLandingView: View {
             }
             .fullScreenCover(isPresented: $presentAddCityView) {
                 AddCityView(viewModel: viewModel)
-                    .tint(Color.primaryColor)
             }
             
         }

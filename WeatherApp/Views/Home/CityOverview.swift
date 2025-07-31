@@ -136,7 +136,7 @@ struct CityOverview: View {
                     if let weatherData = viewModel.weather {
                         ForEach(weatherData.list.prefix(5), id: \.dt) { data in
                             let icon = data.weather.first?.icon ?? Constants.defaultIcon
-                            let iconUrl = AppConstants.getIconURL(for: icon)
+                            let iconUrl = URLBuilder.getIconURL(for: icon)
                             HourlyBox(time: viewModel.formattedTime(from: data.dtTxt),
                                       iconURL: iconUrl,
                                       temp: Int(data.main.temp))

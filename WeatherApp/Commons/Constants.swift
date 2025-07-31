@@ -24,3 +24,8 @@ struct ImageConstants {
     static let location = "location.fill"
     static let cross = "xmark.circle.fill"
 }
+
+struct AppConstants {
+    static let weatherAPIKey = "weather_api_key"
+    static let airVisualAPIKey = "airvisual_api_key"
+}

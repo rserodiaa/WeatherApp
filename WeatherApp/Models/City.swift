@@ -19,7 +19,7 @@ struct City: Identifiable {
     }
     
     init(from entity: CDCity) {
-        self.init(id: entity.id ?? UUID(),
+        self.init(id: entity.id!,
                   cityName: entity.cityName ?? "",
                   createdOn: entity.createdOn ?? Date())
     }

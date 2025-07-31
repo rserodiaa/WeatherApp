@@ -23,6 +23,10 @@ struct PollutionAQIView: View {
                 Text("\(aqiLevel)").font(.title)
                 Text("US AQI").font(.caption).fontWeight(.light)
             }
+            .padding(5)
+            .padding(.horizontal, 8)
+            .background(RoundedRectangle(cornerRadius: 8)
+                .fill(Color(hex: PollutionHelper.getPollutionLevel(aqi: aqiLevel).3).opacity(0.6)))
             
             Text(PollutionHelper.getPollutionLevel(aqi: aqiLevel).0.rawValue)
                 .padding(.leading, 8)

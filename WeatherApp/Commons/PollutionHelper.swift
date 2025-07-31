@@ -36,7 +36,23 @@ struct PollutionHelper {
         }
     }
     
-    static let colorCodes: [UInt] = [0xa8e05f, 0xfdd64b, 0xff9b57, 0xfe6a69, 0xa97abc]
+    
+    static let colorCodes: [UInt] = [
+        0xB6E388, // Light Green
+        0xf8ed62, // Warm Yellow
+        0xFFA559, // Peach
+        0xFA7070, // Soft Red
+        0x9775FA  // Lavender Purple
+    ]
+
+    static let darkColorCodes: [UInt] = [
+        0x7BAE5E, // Darker Green
+        0xe9d700, // Dark Mustard
+        0xC6744B, // Muted Coral
+        0xC55050, // Deep Rose
+        0x6C5DC5  // Dark Violet
+    ]
+
     
     static func getSOCode(_ value: Int) -> UInt {
         switch value {
@@ -110,13 +126,13 @@ struct PollutionHelper {
     ///
     /// - Parameter aqi: AQI Int value in Int which falls into specific range
     /// - Returns: Returns a tuple with PollutionLevels, colorCodes and image name
-    static func getPollutionLevel(aqi: Int) -> (PollutionLevels, UInt, String) {
+    static func getPollutionLevel(aqi: Int) -> (PollutionLevels, UInt, String, UInt) {
         switch aqi {
-        case 0...50 : return (PollutionLevels.Good, colorCodes[0], ImageConstants.happy) // Green
-        case 51...100: return (PollutionLevels.Moderate, colorCodes[1], ImageConstants.moderate) // Yellow
-        case 101...150: return (PollutionLevels.Sensitive, colorCodes[2], ImageConstants.unhealthy) // Orange
-        case 151...200: return (PollutionLevels.Unhealthy, colorCodes[3], ImageConstants.bad) // Red
-        default: return (PollutionLevels.Hazardous, colorCodes[4], ImageConstants.hazardous) // Purple
+        case 0...50 : return (PollutionLevels.Good, colorCodes[0], ImageConstants.happy, darkColorCodes[0]) // Green
+        case 51...100: return (PollutionLevels.Moderate, colorCodes[1], ImageConstants.moderate, darkColorCodes[1]) // Yellow
+        case 101...150: return (PollutionLevels.Sensitive, colorCodes[2], ImageConstants.unhealthy, darkColorCodes[2]) // Orange
+        case 151...200: return (PollutionLevels.Unhealthy, colorCodes[3], ImageConstants.bad, darkColorCodes[3]) // Red
+        default: return (PollutionLevels.Hazardous, colorCodes[4], ImageConstants.hazardous, darkColorCodes[4]) // Purple
         }
     }
     

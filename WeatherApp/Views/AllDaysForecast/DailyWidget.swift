@@ -49,7 +49,7 @@ struct DailyWidget: View {
                             ForEach(Array(daily.enumerated()), id: \.element.dt) { index, data in
                                 let date = cityViewModel.formattedDate(from: data.dtTxt)
                                 let icon = data.weather.first?.icon ?? Constants.defaultIcon
-                                let iconUrl = URL(string: AppConstants.getIconURL(for: icon))
+                                let iconUrl = URL(string: URLBuilder.getIconURL(for: icon))
                                 
                                 DailyForecastCard(
                                     imageName: iconUrl,
