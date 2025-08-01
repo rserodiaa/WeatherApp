@@ -73,7 +73,7 @@ struct DailyWidget: View {
         .padding(.bottom, 20)
         .background(
             RoundedRectangle(cornerRadius: 30)
-                .fill(Color.primaryColor.opacity(0.75))
+                .fill(Color.primaryColor)
         )
         .padding(.horizontal, 20)
     }

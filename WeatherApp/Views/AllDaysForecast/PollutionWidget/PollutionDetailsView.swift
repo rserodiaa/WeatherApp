@@ -38,7 +38,7 @@ struct PollutionDetailsView: View {
         .frame(maxWidth: .infinity)
         .background(
             RoundedRectangle(cornerRadius: 30)
-                .fill(Color.offWhite)
+                .fill(Color.paleYellow)
                 .shadow(radius: 6)
         )
         .padding(.horizontal, 25)

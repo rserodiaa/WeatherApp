@@ -111,7 +111,6 @@ struct AddCityView: View {
                         }
                         .listStyle(.plain)
                         .scrollContentBackground(.hidden)
-                        
                     }
                 }
             }
