@@ -24,9 +24,13 @@ struct PollutionDetailsView: View {
                                     .foregroundColor(Color(hex: pollutant.getColor(value: value)))
                                     .padding(2)
                                 Text("\(value)")
+                                    .fontWeight(.bold)
+                                    .foregroundColor(Color.white)
                             }
                             Text(pollutant.value)
                                 .font(.caption)
+                                .fontWeight(.heavy)
+                                .foregroundColor(.white)
                         }
                     }
                 }
@@ -38,7 +42,7 @@ struct PollutionDetailsView: View {
         .frame(maxWidth: .infinity)
         .background(
             RoundedRectangle(cornerRadius: 30)
-                .fill(Color.paleYellow)
+                .fill(Color.darkPurpleColor)
                 .shadow(radius: 6)
         )
         .padding(.horizontal, 25)

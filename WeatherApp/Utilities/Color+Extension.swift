@@ -18,7 +18,7 @@ extension Color {
     }
     
     static let offWhite = Color(hex: 0xFAF9F6)
-    static let paleYellow = Color(hex: 0xFFFBDE)
+    static let paleYellow = Color(hex: 0xEABDE6)
     static let primaryColor = Color(hex: 0xAA60C8)
     static let darkPurpleColor = Color(hex: 0x7F55B1)
 }
