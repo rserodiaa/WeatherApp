@@ -17,7 +17,7 @@ struct WeatherLandingViewModelTests {
         mockRepo = MockWeatherRepository()
         mockRepo.citiesToReturn = [
                 City(cityName: "Delhi"),
-                City(cityName: "Paris")
+                City(cityName: "Gurugram")
             ]
         viewModel = WeatherLandingViewModel(repostory: mockRepo)
     }
