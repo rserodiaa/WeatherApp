@@ -11,7 +11,7 @@ import Testing
 @Suite
 struct WeatherRepositoryTests {
     var mockStorage: MockWeatherStorageService
-    let repository: WeatherRepository
+    let repository: WeatherRepositoryProtocol
     
     init() {
         mockStorage = MockWeatherStorageService()

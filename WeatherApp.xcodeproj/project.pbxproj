@@ -46,11 +46,6 @@
 			path = WeatherAppTests;
 			sourceTree = "<group>";
 		};
-		54A4F2FE2E2EA72A00BBAEEB /* WeatherAppUITests */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = WeatherAppUITests;
-			sourceTree = "<group>";
-		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,7 +81,6 @@
 			children = (
 				54A4F2E02E2EA72400BBAEEB /* WeatherApp */,
 				54A4F2F42E2EA72A00BBAEEB /* WeatherAppTests */,
-				54A4F2FE2E2EA72A00BBAEEB /* WeatherAppUITests */,
 				54A4F32B2E320DB100BBAEEB /* Frameworks */,
 				54A4F2DF2E2EA72400BBAEEB /* Products */,
 			);
@@ -172,9 +166,6 @@
 			);
 			dependencies = (
 				54A4F2FD2E2EA72A00BBAEEB /* PBXTargetDependency */,
-			);
-			fileSystemSynchronizedGroups = (
-				54A4F2FE2E2EA72A00BBAEEB /* WeatherAppUITests */,
 			);
 			name = WeatherAppUITests;
 			packageProductDependencies = (
