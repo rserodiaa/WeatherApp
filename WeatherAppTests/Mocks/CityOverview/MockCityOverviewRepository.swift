@@ -9,9 +9,20 @@ import Combine
 import Foundation
 @testable import WeatherApp
 
+struct MockWeatherUtils {
+    static func loadSampleWeather() -> Weather {
+        let bundle = Bundle(for: MockCityOverviewRepository.self)
+        guard let url = bundle.url(forResource: "WeatherSample", withExtension: "json") else {
+            fatalError("WeatherSample.json not found")
+        }
+        let data = try! Data(contentsOf: url)
+        return try! JSONDecoder().decode(Weather.self, from: data)
+    }
+}
+
 final class MockCityOverviewRepository: CityOverviewRepositoryProtocol {
-    var error: Error? = nil
-    var mockData: Weather = MockCityOverviewRepository.loadSampleWeather()
+    var error: Error?
+    var mockData: Weather = MockWeatherUtils.loadSampleWeather()
 
     func fetchWeatherData(for city: String) -> AnyPublisher<Weather, Error> {
         if let error = error {
@@ -21,14 +32,5 @@ final class MockCityOverviewRepository: CityOverviewRepositoryProtocol {
                 .setFailureType(to: Error.self)
                 .eraseToAnyPublisher()
         }
-    }
-
-    private static func loadSampleWeather() -> Weather {
-        let bundle = Bundle(for: MockCityOverviewRepository.self)
-        guard let url = bundle.url(forResource: "WeatherSample", withExtension: "json") else {
-            fatalError("WeatherSample.json not found")
-        }
-        let data = try! Data(contentsOf: url)
-        return try! JSONDecoder().decode(Weather.self, from: data)
     }
 }
