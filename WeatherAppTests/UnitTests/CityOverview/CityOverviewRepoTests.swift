@@ -48,7 +48,7 @@ final class CityOverviewRepositoryTests {
         mockService.error = URLError(.timedOut)
         let repo = CityOverviewRepository(service: mockService)
 
-        repo.fetchWeatherData(for: "Gurugram")
+        repo.fetchWeatherData(for: "UnknownCity")
             .sink(
                 receiveCompletion: { completion in
                     if case .failure(let error) = completion {

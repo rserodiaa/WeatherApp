@@ -18,6 +18,7 @@ enum CustomErrors: LocalizedError {
     case fetchFailed
     case deleteFailed
     case saveFailed
+    case apiError(String)
 
     var errorDescription: String? {
         switch self {
@@ -27,6 +28,8 @@ enum CustomErrors: LocalizedError {
             return "Could not delete the City."
         case .saveFailed:
             return "Could not save your City. Please try again."
+        case .apiError(let message):
+            return "AQI API Error: \(message)"
         }
     }
 }

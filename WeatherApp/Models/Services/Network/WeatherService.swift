@@ -56,6 +56,12 @@ struct WeatherService: WeatherServiceProtocol {
                 return element.data
             }
             .decode(type: PollutionData.self, decoder: JSONDecoder())
+            .tryMap { pollutionData in
+                    guard pollutionData.status == .success else {
+                        throw CustomErrors.apiError(pollutionData.status.description)
+                    }
+                    return pollutionData
+                }
             .eraseToAnyPublisher()
     }
     

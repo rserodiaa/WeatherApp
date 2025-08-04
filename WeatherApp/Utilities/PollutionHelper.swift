@@ -36,7 +36,7 @@ struct PollutionHelper {
         }
     }
     
-    
+    // MARK: Color codes for different pollution levels for AQI and pollutants
     static let colorCodes: [UInt] = [
         0xB6E388, // Light Green
         0xf8ed62, // Warm Yellow
@@ -53,7 +53,7 @@ struct PollutionHelper {
         0x6C5DC5  // Dark Violet
     ]
 
-    
+    // MARK: Ring color based on pollution components level ``https://openweathermap.org/api/air-pollution``
     static func getSOCode(_ value: Int) -> UInt {
         switch value {
         case 0...20: return colorCodes[0]
