@@ -14,7 +14,7 @@ enum LoadingState: Equatable {
     case error(String)
 }
 
-enum CustomErrors: LocalizedError {
+enum CustomErrors: LocalizedError, Equatable {
     case fetchFailed
     case deleteFailed
     case saveFailed

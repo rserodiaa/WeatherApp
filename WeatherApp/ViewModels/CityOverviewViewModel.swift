@@ -38,6 +38,14 @@ final class CityOverviewViewModel: ObservableObject {
         return DateFormatter.time.string(from: Date())
     }
     
+    var sunriseTime: String {
+        return formattedTime(from: TimeInterval(weather?.city.sunrise ?? 0))
+    }
+    
+    var sunsetTime: String {
+        return formattedTime(from: TimeInterval(weather?.city.sunset ?? 0))
+    }
+    
     var currentDate: String {
         return DateFormatter.homeDate.string(from: Date())
     }
@@ -52,6 +60,11 @@ final class CityOverviewViewModel: ObservableObject {
     
     func formattedTime(from dateStr: String) -> String {
         guard let date = DateFormatter.serverDate.date(from: dateStr) else { return "" }
+        return DateFormatter.time.string(from: date)
+    }
+    
+    func formattedTime(from unixTime: TimeInterval) -> String {
+        let date = Date(timeIntervalSince1970: unixTime)
         return DateFormatter.time.string(from: date)
     }
     

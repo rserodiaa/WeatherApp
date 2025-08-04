@@ -30,6 +30,11 @@ struct CityOverviewViewModelTests {
         #expect(viewModel.wind == "3 Km/h")
         #expect(viewModel.precipitation == "30.0%")
         #expect(viewModel.pressure == "1002")
+        #expect(viewModel.sunriseTime == "05:44 AM")
+        #expect(viewModel.sunsetTime ==  "07:11 PM")
+        #expect(viewModel.latLong.lat == 28.4646)
+        #expect(viewModel.latLong.lon == 77.0299)
+        #expect(viewModel.dailyForecast?.count == 5)
     }
 
     @Test("Test weather fetch failure")

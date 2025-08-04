@@ -11,6 +11,7 @@ extension DateFormatter {
     private static func make(with format: String) -> DateFormatter {
         let formatter = DateFormatter()
         formatter.dateFormat = format
+        formatter.timeZone = .current
         return formatter
     }
 

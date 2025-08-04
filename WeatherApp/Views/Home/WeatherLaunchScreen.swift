@@ -22,9 +22,9 @@ struct WeatherLaunchScreen: View {
         ZStack {
             LinearGradient(
                 colors: [
-                    Color.primaryColor.opacity(0.8),
-                    Color.primaryColor.opacity(0.6),
-                    Color.primaryColor.opacity(0.7)
+                    Color(hex: 0xc37ee6),
+                    Color(hex: 0xce94ea),
+                    Color(hex: 0x9ea0f6)
                 ],
                 startPoint: .topLeading,
                 endPoint: .bottomTrailing
@@ -79,7 +79,6 @@ struct WeatherLaunchScreen: View {
                         )
                 }
                 
-                // App name
                 VStack(spacing: 8) {
                     Text(Constants.title)
                         .font(.system(size: 32, weight: .bold, design: .rounded))

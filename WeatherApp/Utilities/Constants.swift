@@ -24,6 +24,8 @@ struct ImageConstants {
     static let search = "magnifyingglass"
     static let location = "location.fill"
     static let cross = "xmark.circle.fill"
+    static let sunset = "sunset.fill"
+    static let sunrise = "sunrise.fill"
 }
 
 struct AppConstants {

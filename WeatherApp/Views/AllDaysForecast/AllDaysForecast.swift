@@ -30,6 +30,12 @@ struct AllDaysForecast: View {
                 
             Spacer().frame(height: 30)
             
+            SunriseSunsetWidget(sunriseTime: cityViewModel.sunriseTime, sunsetTime: cityViewModel.sunsetTime)
+                .frame(maxWidth: .infinity, minHeight: 150)
+                .clipShape(RoundedRectangle(cornerRadius: 30))
+                .padding(.horizontal, 25)
+                .padding(.bottom, 30)
+            
             switch viewModel.status {
             case .idle:
                 EmptyView()

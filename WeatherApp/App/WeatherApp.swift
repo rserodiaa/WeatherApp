@@ -1,5 +1,5 @@
 //
-//  WeatherAppApp.swift
+//  WeatherApp.swift
 //  WeatherApp
 //
 //  Created by Rahul Serodia on 21/07/25.
@@ -8,7 +8,7 @@
 import SwiftUI
 
 @main
-struct WeatherAppApp: App {
+struct WeatherApp: App {
     init() {
         let keyExists = KeychainHelper.shared.read(forKey: AppConstants.weatherAPIKey) != nil
         if !keyExists {
