@@ -22,7 +22,7 @@ struct WeatherRepositoryTests {
         repository = WeatherRepository(storageService: mockStorage)
     }
     
-    @Test
+    @Test("Test cities being fetched successfully from storage")
     func fetchCitiesSuccess() {
         var result: [City] = []
         #expect(throws: Never.self) {
@@ -33,7 +33,7 @@ struct WeatherRepositoryTests {
         #expect(result.first?.cityName == "Delhi")
     }
 
-    @Test
+    @Test("Test cities fetched failure from storage")
     func fetchCitiesFailure() {
         mockStorage.errorToThrow = CustomErrors.fetchFailed
         #expect(throws: CustomErrors.fetchFailed) {
@@ -41,7 +41,7 @@ struct WeatherRepositoryTests {
         }
     }
 
-    @Test
+    @Test("Test city creation successfully")
     func createCitySuccess() {
         var result: [City] = []
         #expect(throws: Never.self) {
@@ -53,7 +53,7 @@ struct WeatherRepositoryTests {
         #expect(result.last?.cityName == "London")
     }
 
-    @Test
+    @Test("Test city creation failure")
     func createCityFailure() {
         mockStorage.errorToThrow = CustomErrors.saveFailed
         #expect(throws: CustomErrors.saveFailed) {
@@ -61,7 +61,7 @@ struct WeatherRepositoryTests {
         }
     }
 
-    @Test
+    @Test("Test city deletion successfully")
     func deleteCitySuccess() {
         var cities: [City] = []
         #expect(throws: Never.self) {
@@ -76,7 +76,7 @@ struct WeatherRepositoryTests {
         #expect(cities.contains { $0.cityName == "Delhi" } == false)
     }
 
-    @Test
+    @Test("Test city deletion failure, if not found")
     func deleteCityFailure() {
         let city = City(cityName: "Rome")
 

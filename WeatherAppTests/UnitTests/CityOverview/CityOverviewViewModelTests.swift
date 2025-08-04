@@ -13,7 +13,7 @@ import Foundation
 @Suite
 struct CityOverviewViewModelTests {
 
-    @Test
+    @Test("Test weather fetch success")
     func weatherFetchSuccess() async {
         let mockRepo = MockCityOverviewRepository()
         let viewModel = CityOverviewViewModel(repository: mockRepo)
@@ -32,7 +32,7 @@ struct CityOverviewViewModelTests {
         #expect(viewModel.pressure == "1002")
     }
 
-    @Test
+    @Test("Test weather fetch failure")
     func testWeatherFetchFailure() async {
         let mockRepo = MockCityOverviewRepository()
         mockRepo.error = URLError(.badServerResponse)

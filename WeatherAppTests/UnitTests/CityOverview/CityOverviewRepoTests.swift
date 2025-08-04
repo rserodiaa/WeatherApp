@@ -17,7 +17,7 @@ final class CityOverviewRepositoryTests {
     var receivedError: Error?
     var cancellables = Set<AnyCancellable>()
     
-    @Test("Repository returns weather data on success")
+    @Test("Test Repository fetch from service returns weather data on success")
     func testFetchWeatherSuccess() async {
         let mockService = MockWeatherService()
         let repo = CityOverviewRepository(service: mockService)
@@ -37,12 +37,12 @@ final class CityOverviewRepositoryTests {
         
         try? await Task.sleep(for: .milliseconds(200))
         
-        #expect(receivedWeather?.city.name == "Gurugram")
-        #expect(!(receivedWeather?.list.isEmpty ?? true))
+        #expect(receivedWeather?.city.name == "Gurugram", "City name should match")
+        #expect(!(receivedWeather?.list.isEmpty ?? true), "Weather list should not be empty")
         #expect(receivedError == nil)
     }
 
-    @Test("Repository returns error on failure")
+    @Test("Test Repository fetch from service returns error on failure")
     func testFetchWeatherFailure() async {
         let mockService = MockWeatherService()
         mockService.error = URLError(.timedOut)

@@ -34,7 +34,7 @@ struct WeatherStorageServiceTests {
         storageService = WeatherStorageService(context: mockContext)
     }
 
-    @Test
+    @Test("Test creating and fetching a city to in memory core data")
     func createAndFetchCity() throws {
         let city = City(cityName: "Tokyo")
 
@@ -45,7 +45,7 @@ struct WeatherStorageServiceTests {
         #expect(cities.first?.cityName == "Tokyo")
     }
 
-    @Test
+    @Test("Test deleting a city from in memory core data")
     func deleteCity() throws {
         let city = City(cityName: "Paris")
 
@@ -56,7 +56,7 @@ struct WeatherStorageServiceTests {
         #expect(cities.isEmpty)
     }
 
-    @Test
+    @Test("Test deleting a non-existent city from in memory core data")
     func deleteNonExistentCity() throws {
         let city = City(cityName: "Nonexistent")
         try storageService.delete(city: city)

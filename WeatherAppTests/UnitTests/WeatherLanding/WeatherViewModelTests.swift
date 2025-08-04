@@ -22,7 +22,7 @@ struct WeatherLandingViewModelTests {
         viewModel = WeatherLandingViewModel(repostory: mockRepo)
     }
     
-    @Test
+    @Test("Test fetching cities successfully from repository")
     func fetchCitiesSuccess() {
         viewModel.fetchCities()
         
@@ -31,7 +31,7 @@ struct WeatherLandingViewModelTests {
         #expect(viewModel.cities.first?.cityName == "Delhi")
     }
     
-    @Test
+    @Test("Test fetching cities failure from repository")
     func fetchCitiesFailure() {
         mockRepo.errorToThrow = CustomErrors.fetchFailed
         viewModel.fetchCities()
@@ -39,7 +39,7 @@ struct WeatherLandingViewModelTests {
         #expect(viewModel.status == .error(CustomErrors.fetchFailed.localizedDescription))
     }
 
-    @Test
+    @Test("Test adding a city successfully to repository")
     func addCitySuccess() {
         viewModel.addCity("Tokyo")
         #expect(viewModel.status == .loaded)
@@ -47,14 +47,14 @@ struct WeatherLandingViewModelTests {
         #expect(viewModel.cities.contains(where: { $0.cityName == "Tokyo" }))
     }
     
-    @Test
+    @Test("Test adding a city failure from repository")
     func addCityFailure() {
         mockRepo.errorToThrow = CustomErrors.saveFailed
         viewModel.addCity("Tokyo")
         #expect(viewModel.status == .error(CustomErrors.saveFailed.localizedDescription))
     }
 
-    @Test
+    @Test("Test deleting a city successfully from repository")
     func deleteCitySuccess() {
         viewModel.fetchCities()
         let cityToDelete = viewModel.cities.first { $0.cityName == "Delhi" }
@@ -65,7 +65,7 @@ struct WeatherLandingViewModelTests {
         #expect(!viewModel.cities.contains(where: { $0.cityName == "Delhi" }))
     }
     
-    @Test
+    @Test("Test deleting a city failure from repository")
     func deleteCityFailure() {
         viewModel.fetchCities()
         let cityToDelete = City(cityName: "Goa")
