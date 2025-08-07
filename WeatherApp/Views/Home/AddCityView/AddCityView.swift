@@ -12,8 +12,6 @@ private struct Constants {
     static let add = "Add"
     static let yourCities = "Your Cities"
     static let manageCities = "Manage Cities"
-    static let cancel = "Cancel"
-    static let done = "Done"
     static let error = "Error"
     static let ok = "OK"
     static let duplicateCity = "This city is already in your list"
@@ -39,7 +37,9 @@ struct AddCityView: View {
                             .autocapitalization(.words)
                             .disableAutocorrection(true)
                             .padding()
-                            .background(.white.opacity(0.9))
+                            .background(Color.primaryColor.opacity(0.2))
+                            .foregroundColor(.white)
+                            .fontWeight(.semibold)
                             .cornerRadius(15)
                         
                         Button(Constants.add) {
@@ -49,7 +49,7 @@ struct AddCityView: View {
                         .padding(.horizontal, 20)
                         .padding(.vertical, 12)
                         .background(
-                            cityName.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty ? Color.gray.opacity(0.7) : Color.primaryColor
+                            cityName.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty ? Color.gray.opacity(0.5) : Color.primaryColor
                         )
                         .foregroundColor(.white)
                         .fontWeight(.semibold)
@@ -121,19 +121,14 @@ struct AddCityView: View {
             .toolbarBackground(.clear, for: .navigationBar)
             .toolbarColorScheme(.dark, for: .navigationBar)
             .toolbar {
-                ToolbarItem(placement: .navigationBarLeading) {
-                    Button(Constants.cancel) {
-                        dismiss()
-                    }
-                    .foregroundColor(.white)
-                }
-                
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    Button(Constants.done) {
-                        dismiss()
+                    Button(action: {
+                    dismiss()
+                    }) {
+                        Image(systemName: "xmark")
+                            .foregroundColor(Color.primaryColor)
+                            .padding(8)
                     }
-                    .fontWeight(.semibold)
-                    .foregroundColor(.white)
                 }
             }
             .alert(Constants.error, isPresented: $showingAlert) {

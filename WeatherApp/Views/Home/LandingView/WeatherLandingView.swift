@@ -47,6 +47,8 @@ struct WeatherLandingView: View {
                         handleAddCity()
                     } label: {
                         Image(systemName: ImageConstants.plus)
+                            .font(.title3)
+                            .padding(8)
                     }
                 }
             }

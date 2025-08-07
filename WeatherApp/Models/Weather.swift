@@ -60,14 +60,12 @@ struct MainClass: Codable {
     let tempKf: Double
 
     enum CodingKeys: String, CodingKey {
-        case temp
+        case temp, pressure, humidity
         case feelsLike = "feels_like"
         case tempMin = "temp_min"
         case tempMax = "temp_max"
-        case pressure
         case seaLevel = "sea_level"
         case grndLevel = "grnd_level"
-        case humidity
         case tempKf = "temp_kf"
     }
 }
