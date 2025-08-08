@@ -125,7 +125,7 @@ struct AddCityView: View {
                     Button(action: {
                     dismiss()
                     }) {
-                        Image(systemName: "xmark")
+                        Image(systemName: ImageConstants.xmark)
                             .foregroundColor(Color.primaryColor)
                             .padding(8)
                     }

@@ -7,6 +7,10 @@
 
 import SwiftUI
 
+private struct Constants {
+    static let sunriseText = "Sunrise & Sunset"
+}
+
 struct SunriseSunsetWidget: View {
     let sunriseTime: String
     let sunsetTime: String
@@ -23,7 +27,7 @@ struct SunriseSunsetWidget: View {
             .ignoresSafeArea()
             
             VStack(spacing: 10) {
-                Text("Sunrise & Sunset")
+                Text(Constants.sunriseText)
                     .font(.headline)
                     .foregroundColor(.white)
                 

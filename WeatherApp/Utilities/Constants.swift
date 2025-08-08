@@ -26,6 +26,7 @@ struct ImageConstants {
     static let cross = "xmark.circle.fill"
     static let sunset = "sunset.fill"
     static let sunrise = "sunrise.fill"
+    static let xmark = "xmark"
 }
 
 struct AppConstants {

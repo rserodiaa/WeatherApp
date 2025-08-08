@@ -11,6 +11,7 @@ import SDWebImageSwiftUI
 private struct Constants {
     static let back = "Back"
     static let chevronLeft = "chevron.left"
+    static let errordisplay = "Unable to load pollution widget due to error: "
 }
 
 struct AllDaysForecast: View {
@@ -46,7 +47,7 @@ struct AllDaysForecast: View {
                     Image(systemName: ImageConstants.exclamationTriangle)
                         .foregroundColor(.red)
                         .font(.title)
-                    Text("Unable to load pollution widget due to error: \(message)")
+                    Text("\(Constants.errordisplay)\(message)")
                         .multilineTextAlignment(.center)
                         .padding()
                 }

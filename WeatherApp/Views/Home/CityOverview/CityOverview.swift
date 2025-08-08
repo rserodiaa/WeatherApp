@@ -150,6 +150,7 @@ struct CityOverview: View {
     }
 }
 
+// Todo pass mock data for preview
 //struct CityOverview_Previews: PreviewProvider {
 //    static var previews: some View {
 //        CityOverview(city: "Gurugram")

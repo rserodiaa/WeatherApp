@@ -7,6 +7,10 @@
 
 import SwiftUI
 
+private struct Constants {
+    static let usAqi = "US AQI"
+}
+
 struct PollutionAQIView: View {
     var aqiLevel: Int
     @State private var showingPopover = false
@@ -21,7 +25,7 @@ struct PollutionAQIView: View {
             
             VStack {
                 Text("\(aqiLevel)").font(.title)
-                Text("US AQI").font(.caption).fontWeight(.light)
+                Text(Constants.usAqi).font(.caption).fontWeight(.light)
             }
             .padding(5)
             .padding(.horizontal, 8)
