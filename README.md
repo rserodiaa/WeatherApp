@@ -4,7 +4,7 @@ This project is a demosntration of SwiftUI and Combine and shows weather reports
 ## Design Pattern Used
 This project follows a clean **MVVM architecture** with a **Repository pattern**, offering a modular, testable, and scalable approach.
 **Repository Pattern**
-All data operations are centralized in Repository, which can acts as a bridge between:
+All data operations are centralized in Repository, which can acts as a bridge between viewmodel and following services:
 - Storage Layer (WeatherStorageServiceProtocol) – handles Core Data operations.
 - Network Layer (WeatherServiceProtocol) – handles fetching weather details, AQI and pollution components.
 
@@ -66,7 +66,7 @@ Swift 5.0
 ## App Screenshots
 
 <a href="url"><img src="https://github.com/user-attachments/assets/c320ebc9-db6b-4834-ab8d-07f749d68275" align="left" height="350"></a>
-<a href="url"><img src="https://github.com/user-attachments/assets/17c0c52b-85e6-4ba4-9574-612407787e6f" align="left" height="350"></a>
+<a href="url"><img src="https://github.com/user-attachments/assets/b7caeb6c-ba9b-4346-933a-b5927f8ac1c3" align="left" height="350"></a>
 <a href="url"><img src="https://github.com/user-attachments/assets/8bafe372-77c6-43e0-af37-03c4f3f3c936" align="left" height="350"></a>
 <a href="url"><img src="https://github.com/user-attachments/assets/db18a31e-604c-4ce9-b639-dad29b349048" align="left" height="350"></a>
 <br clear="left"><br>
